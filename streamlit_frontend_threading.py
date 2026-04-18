@@ -8,6 +8,7 @@ import uuid
 def generate_thread_id():
     thread_id = uuid.uuid4()
     return thread_id
+    
 
 def reset_chat():
     thread_id = generate_thread_id()
@@ -33,7 +34,7 @@ if 'thread_id' not in st.session_state:
     st.session_state['thread_id'] = generate_thread_id()
 
 if 'chat_threads' not in st.session_state:
-    st.session_state['chat_threads'] = []
+    st.session_state['chat_threads'] = []# ! This mweans that when the program loads so zero threads 
 
 add_thread(st.session_state['thread_id'])
 
@@ -97,3 +98,6 @@ if user_input:
         ai_message = st.write_stream(ai_only_stream())
 
     st.session_state['message_history'].append({'role': 'assistant', 'content': ai_message})
+    
+    
+    # ! First we make the sidebar
